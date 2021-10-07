@@ -18,6 +18,7 @@ Docker services allow you to start postgres, rabbitMQ, redis, adminer using one 
 - Adminer
 - RabbitMQ
 - Redis
+- MongoDB
   
 ## Installation
 
@@ -53,5 +54,6 @@ docker-comspose up -d adminer postgres
  - PostgreSQL: 5432
  - RabbiMQ: 5672 & 15672
  - Redis: 6379
+ - MongoDB: 27017-27019
 
   
