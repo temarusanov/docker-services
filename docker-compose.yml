@@ -7,48 +7,61 @@ services:
     restart: always
     container_name: adminer
     environment:
-      ADMINER_PLUGINS: tables-filter tinymce
-      ADMINER_DESIGN: lucas-sandery
+      ADMINER_PLUGINS: ${ADMINER_PLUGINS}
+      ADMINER_DESIGN: ${ADMINER_DESIGN}
     ports:
-      - 8080:8080
+      - ${ADMINER_PORT}:8080
 
   postgres:
     image: postgres:13.1
     restart: always
     container_name: postgres
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./runtime/postgres:/var/lib/postgresql/data
       - ./postgres/postgresql.conf:/etc/postgresql/postgresql.conf
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT}:5432
 
   rabbitmq:
     image: rabbitmq:3-management
     restart: always
     container_name: rabbitmq
     environment:
-      - RABBITMQ_DEFAULT_USER=guest
-      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbitmq_management load_definitions "/etc/rabbitmq/rabbit.json"
     hostname: rabbitmq
     volumes:
       - ./runtime/rabbitmq:/var/lib/rabbitmq
       - ./rabbitmq/rabbit.json:/etc/rabbitmq/rabbit.json
     ports:
-      - "15672:15672"
-      - "5672:5672"
+      - "${RABBITMQ_CLIENT_PORT}:15672"
+      - "${RABBITMQ_SERVER_PORT}:5672"
 
   redis:
     image: redis
     container_name: redis
     environment:
-      - REDIS_PASSWORD=secret
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
     volumes:
       - ./runtime/redis:/bitnami/redis/data
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT}:6379"
+
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - ./runtime/mongo:/data/db
+      - ./mongo/mongodb.conf:/etc/mongodb.conf
+    ports:
+      - "${MONGO_PORT}:27017-27019"
     

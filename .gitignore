@@ -16,3 +16,6 @@ logs
 *.launch
 .settings/
 *.sublime-workspace
+
+.env
+!.env.example

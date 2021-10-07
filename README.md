@@ -21,22 +21,30 @@ Docker services allow you to start postgres, rabbitMQ, redis, adminer using one 
   
 ## Installation
 
-Create folder
+1. Create folder
 
 ```bash
 mkdir ~/docker
 ```
 
-Clone this repo
+2. Clone this repo
 
 ```bash
 git clone https://github.com/temarusanov/docker-services.git .
 ```
 
-Run containers
+3. Create `.env` from `.env.example` and configure it
+
+4. Run containers
 
 ```bash
 docker-comspose up -d
+```
+
+Or launch specific containers
+
+```bash
+docker-comspose up -d adminer postgres
 ```
     
 ## Default ports
