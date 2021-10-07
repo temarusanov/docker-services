@@ -30,7 +30,7 @@ mkdir ~/docker
 Clone this repo
 
 ```bash
-git clone git@gitlab.i-link.pro:i-link/docker-services.git .
+git clone https://github.com/temarusanov/docker-services.git .
 ```
 
 Run containers
