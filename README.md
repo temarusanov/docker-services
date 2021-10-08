@@ -1,7 +1,7 @@
 
 # Docker services
 
-Docker services allow you to start postgres, rabbitMQ, redis, adminer using one command. The main point of this project is to create one folder where all the services launched on the servers will be stored.
+Docker services allow you to start services using one command. The main point of this project is to create one folder where all the services launched on the servers will be stored.
 
 
 

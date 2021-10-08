@@ -1,4 +1,8 @@
-version: '3.1'
+version: '3.7'
+
+networks:
+  docker_network:
+    name: ${NETWORK}
 
 services:
 
@@ -6,6 +10,8 @@ services:
     image: adminer
     restart: always
     container_name: adminer
+    networks:
+      docker_network:
     environment:
       ADMINER_PLUGINS: ${ADMINER_PLUGINS}
       ADMINER_DESIGN: ${ADMINER_DESIGN}
@@ -16,6 +22,8 @@ services:
     image: postgres:13.1
     restart: always
     container_name: postgres
+    networks:
+      docker_network:
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
@@ -29,6 +37,8 @@ services:
     image: rabbitmq:3-management
     restart: always
     container_name: rabbitmq
+    networks:
+      docker_network:
     environment:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
@@ -44,6 +54,8 @@ services:
   redis:
     image: redis
     container_name: redis
+    networks:
+      docker_network:
     environment:
       - REDIS_PASSWORD=${REDIS_PASSWORD}
     volumes:
@@ -56,6 +68,8 @@ services:
     image: mongo
     restart: always
     container_name: mongo
+    networks:
+      docker_network:
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
