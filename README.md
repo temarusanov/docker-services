@@ -19,6 +19,7 @@ Docker services allow you to start services using one command. The main point of
 - RabbitMQ
 - Redis
 - MongoDB
+- MongoExpress
   
 ## Installation
 
@@ -55,5 +56,6 @@ docker-comspose up -d adminer postgres
  - RabbiMQ: 5672 & 15672
  - Redis: 6379
  - MongoDB: 27017-27019
+ - MongoExpress: 8081
 
   
