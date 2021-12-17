@@ -46,7 +46,7 @@ docker-comspose up -d
 Or launch specific containers
 
 ```bash
-docker-comspose up -d adminer postgres
+docker-compose up -d adminer postgres
 ```
     
 ## Default ports
