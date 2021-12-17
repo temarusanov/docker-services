@@ -40,7 +40,7 @@ git clone https://github.com/temarusanov/docker-services.git .
 4. Run containers
 
 ```bash
-docker-comspose up -d
+docker-compose up -d
 ```
 
 Or launch specific containers
